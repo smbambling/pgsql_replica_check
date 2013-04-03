@@ -1,0 +1,7 @@
+CREATE OR REPLACE FUNCTION all_replayed()
+RETURNS BOOLEAN
+LANGUAGE sql
+AS $f$
+SELECT pg_last_xlog_receive_location() =
+pg_last_xlog_replay_location();
+$f$;
